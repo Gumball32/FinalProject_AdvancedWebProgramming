@@ -1,5 +1,6 @@
 <?php
 include "views/inc/header.php";
+var_dump($resObj);
 ?>
 
 <body>

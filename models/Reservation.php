@@ -46,10 +46,10 @@ class Reservation {
     }
 
     public function validateRes($res) {       
-        $sql = "SELECT users.*
-                FROM users JOIN reservations AS res
-                ON users.id = res.user_id 
-                WHERE users.name = ?";
+        $sql = "SELECT u.*, res.id
+                FROM users u , reservations res
+                WHERE u.id = res.user_id 
+                and u.name = ?";
         // var_dump($res['']);
         $stmt = $this->conn->prepare($sql);
         $stmt->bind_param("s", $res['name']);
@@ -60,10 +60,11 @@ class Reservation {
             $this->errors= 0;
             $results = $results->fetch_assoc();
             var_dump($results);
+            var_dump($_SESSION);
             $this->user_id = $results['id'];
-            $this->startDay = $res['startDate'];
-            $this->endDay = $res['endDate'];
-            $this->room_id = $_SESSION['room_id'];
+            $this->startDay = $res['start_date'];
+            $this->endDay = $res['end_date'];
+            $this->room_id = $res['room_id'];
         } else {
             $this->errors['fetch_err']= "Couldn't retrieve resource!";
         }
@@ -80,8 +81,8 @@ class Reservation {
                             FROM `reservations` as res1
                             JOIN `rooms` as r1
                             on res1.room_id = r1.id and  r1.id= 1 )
-            and r.id=? and DATEDIFF(res.end_date, NOW()) <= 0
-      GROUP BY res.room_id";
+                            and r.id=? and DATEDIFF(res.end_date, NOW()) <= 0
+                            GROUP BY res.room_id";
         
         $stmt = $this->conn->prepare($sql);
         $stmt->bind_param("i", $id);
@@ -100,7 +101,6 @@ class Reservation {
         $this->price = 2000;
         $this->total = 2000;
 
-    
         var_dump($this);
 
         $sql = "INSERT INTO `reservations` (`user_id`, `room_id`, `start_date`, `end_date`, `price`, `total`)
@@ -116,8 +116,12 @@ class Reservation {
         // $stmt = $this->conn->prepare($sql);
         // $stmt->bind_param("ssis", $this->post_title, $this->post_body, $this->post_user_id, $this->post_img);
         $stmt->execute();
+        var_dump($stmt);
+        $results = $stmt->get_result();
+        $results = $results->fetch_assoc();
+        var_dump($results);
         if($stmt->affected_rows !== 1) {
-            $this->errors['insert_err'] = "Reservation was not created!";
+            //$this->errors['insert_err'] = "Reservation was not created!";
         } else {
             $this->post_id = $stmt->insert_id;
         }

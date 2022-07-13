@@ -33,27 +33,28 @@ class ReservationsController extends Controller {
     public function newReservation($id) {
         $resObj = new Reservation($this->conn);
         
-        if($resObj->checkReservation($id)->success()) {        
+        // if($resObj->checkReservation($id)->success()) {        
             include "views/create_reservation.php";
-        }
-        else {
-            echo "this room is not available";
-        }
+        // }
+        // else {
+        //     echo "this room is not available";
+        // }
     }
 
     public function newReservation_get() {
         include "views/create_reservation.php";
     }
-    public function create() {
-        $resObj = new Reservation($this->conn);
+    public function create() {        
+        $resObj = new Reservation($this->conn);        
         if($resObj->validateRes($this->req)->success()) {
             if($resObj->createNewRes()->success()) {
                 Router::redirect("reservations/get/" . $resObj->res_id);
             }
         } else {
-            var_dump($resObj);
+            var_dump($this->req);
             $errors = $resObj->errors;
             Messenger::setMsg(strval("Failed to create a reservation! " . $errors["fetch_err"]), "danger");    
+            //Router::redirect("");
             include "views/create_reservation.php";
         }
     }
