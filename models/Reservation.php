@@ -46,25 +46,23 @@ class Reservation {
     }
 
     public function validateRes($res) {       
-        $sql = "SELECT u.*, res.id
+        $sql = "SELECT u.*, res.room_id
                 FROM users u , reservations res
                 WHERE u.id = res.user_id 
                 and u.name = ?";
-        // var_dump($res['']);
         $stmt = $this->conn->prepare($sql);
         $stmt->bind_param("s", $res['name']);
         $stmt->execute();
         $results = $stmt->get_result();
         if($results->num_rows == 1) {
-            // echo "hello";
             $this->errors= 0;
             $results = $results->fetch_assoc();
             var_dump($results);
             var_dump($_SESSION);
             $this->user_id = $results['id'];
-            $this->startDay = $res['start_date'];
-            $this->endDay = $res['end_date'];
-            $this->room_id = $res['room_id'];
+            $this->startDay = $res['startDate'];
+            $this->endDay = $res['endDate'];
+            $this->room_id = $results['room_id'];
         } else {
             $this->errors['fetch_err']= "Couldn't retrieve resource!";
         }
@@ -118,8 +116,8 @@ class Reservation {
         $stmt->execute();
         var_dump($stmt);
         $results = $stmt->get_result();
-        $results = $results->fetch_assoc();
-        var_dump($results);
+        // $results = $results->fetch_assoc();
+        // var_dump($results);
         if($stmt->affected_rows !== 1) {
             //$this->errors['insert_err'] = "Reservation was not created!";
         } else {
