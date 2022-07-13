@@ -51,6 +51,7 @@ class ReservationsController extends Controller {
                 Router::redirect("reservations/get/" . $resObj->res_id);
             }
         } else {
+            var_dump($resObj);
             $errors = $resObj->errors;
             Messenger::setMsg(strval("Failed to create a reservation! " . $errors["fetch_err"]), "danger");    
             include "views/create_reservation.php";

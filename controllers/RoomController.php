@@ -44,9 +44,10 @@ class RoomController extends Controller {
         if($room->validateImage($this->files)->success()){
             if($room->validateRoom($this->req)->success()) {
                 if($room->createNewRoom()->success()) {
+                var_dump("success3");
                  Messenger::setMsg("New room created!", "success");
                  $room = $room->getRoomByName($room->room_name);
-                 header("Location: " . ROOT . "rooms/get/" . $room->room['id']);
+                 Router::redirect("");
                  //var_dump($room->room['id']);
                 }
              } else {

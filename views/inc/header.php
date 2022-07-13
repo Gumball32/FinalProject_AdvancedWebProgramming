@@ -519,13 +519,13 @@
 
     <div class="container">
         <div class="menuDes">
-            <h6 class="text-center pt-3">Where do you want to go</h6>
+            <h2 class="text-center pt-3 text-white">Find Your Home All Around The World</h2>
             <div class="country">
                 <div class="d-flex mt-3 justify-content-center">
                     <a class="m-4" href="#">
 
                         <div class="card">
-                            <img class="card-img-top" src="images/flexible.jpg" alt="" style="height:10rem">
+                            <img class="card-img-top" src="<?= PUBLIC_ROOT?>images/flexible.jpg" alt="" style="height:10rem">
                             <div class="card-body">
                                 <h6 class="card-title text-dark text-center">I'm flexible</h6>
                                 
@@ -535,7 +535,7 @@
                     <a class="m-4" href="#">
 
                         <div class="card">
-                            <img class="card-img-top" src="images/europe.webp" alt="" style="height:10rem">
+                            <img class="card-img-top" src="<?= PUBLIC_ROOT?>images/europe.webp" alt="" style="height:10rem">
                             <div class="card-body">
                                 <h6 class="card-title text-dark text-center">Europe</h6>
                                 
@@ -546,7 +546,7 @@
                     <a class="m-4" href="#">
 
                         <div class="card">
-                            <img class="card-img-top" src="images/france.webp" alt="" style="height:10rem">
+                            <img class="card-img-top" src="<?= PUBLIC_ROOT?>images/france.webp" alt="" style="height:10rem">
                             <div class="card-body">
                                 <h6 class="card-title text-dark text-center">France</h6>
                                 
@@ -559,7 +559,7 @@
                     <a class="m-4" href="#">
 
                         <div class="card">
-                            <img class="card-img-top" src="images/us.webp" alt="" style="height:10rem">
+                            <img class="card-img-top" src="<?= PUBLIC_ROOT?>images/us.webp" alt="" style="height:10rem">
                             <div class="card-body">
                                 <h6 class="card-title text-dark text-center">United States</h6>
                                 
@@ -569,7 +569,7 @@
                     <a class="m-4" href="#">
 
                         <div class="card">
-                            <img class="card-img-top" src="images/canada.webp" alt="" style="height:10rem">
+                            <img class="card-img-top" src="<?= PUBLIC_ROOT?>images/canada.webp" alt="" style="height:10rem">
                             <div class="card-body">
                                 <h6 class="card-title text-dark text-center">Canada</h6>
                                 
@@ -580,7 +580,7 @@
                     <a class="m-4" href="#">
 
                         <div class="card">
-                            <img class="card-img-top" src="images/east.webp" alt="" style="height:10rem">
+                            <img class="card-img-top" src="<?= PUBLIC_ROOT?>images/east.webp" alt="" style="height:10rem">
                             <div class="card-body">
                                 <h6 class="card-title text-dark text-center">East Asia</h6>
                                 
@@ -597,17 +597,7 @@
     <!-- Calendar -->
     <div class="container">
         <div class="calendar">
-            <div class="duration">
-                <h6 class="text-center pt-3 mb-5">Stay for</h6>
-                <div class="btn-duration d-flex justify-content-center">
-                    <button class="btn-weekend btn btn-light mr-4">Weekend</button>
-                    <button class="btn-week btn btn-light mr-4">Week</button>
-                    <button class="btn-month btn btn-light mr-4">Month</button>
-                </div>
-
-            </div>
-            <div class="date">
-                <h6 class="text-center my-5">Go in</h6>
+            <div class="date pb-5 pt-5">
                 <div class="btn-listMonth d-flex flex-wrap justify-content-center">
                     <a class="january mr-3">
                         <div class="card">
@@ -731,11 +721,6 @@
                                 </div>
                                 
                                 <div class="position-choose">
-                                    <!-- <div class="form-group">
-                                    <label for="room_name">Enter name of room: </label>
-                                    <input type="text" name="room_name" id="roomname_search" class="form-control" style="width: 200px;" placeholder="Enter name here...">
-                                    </div> -->
-
                                     <div class="form-group">
                                     <label for="total_occupancy">Enter total occupancy: </label>
                                     <input type="number" name="total_occupancy" id="total_occupancy_search" class="form-control" style="width: 200px;" placeholder="Enter number here...">
@@ -746,52 +731,7 @@
                                     <input type="number" name="total_bedrooms" id="total_bedrooms_search" class="form-control" style="width: 200px;" placeholder="Enter number here...">
                                     </div>
 
-                                    <!-- <div class="form-group">
-                                    <label for="total_bathrooms">Enter total bathrooms: </label>
-                                    <input type="number" name="total_bathrooms" id="total_bathrooms_search" class="form-control" style="width: 200px;" placeholder="Enter number here...">
-                                    </div> -->
                                 </div>
-
-                                <div class="form-group multiple-choice">
-                                    <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="has_TV_search" name="has_TV">
-                                    <label class="form-check-label" for="has_TV">TV</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="has_kitchen_search" name="has_kitchen">
-                                    <label class="form-check-label" for="has_kitchen">Kitchen</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="has_air_con_search" name="has_air_con">
-                                    <label class="form-check-label" for="has_air_con">Cooler</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="has_heating_search" name="has_heating">
-                                    <label class="form-check-label" for="has_heating">Heating</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="has_internet_search" name="has_internet">
-                                    <label class="form-check-label" for="has_internet">Internet</label>
-                                    </div>
-                                </div>
-
-                              <!--   <div class="position-info">
-                                    <div class="form-group">
-                                    <label for="address">Address</label>
-                                    <input type="text" name="address" id="address_search" style="width: 200px;" class="form-control" placeholder="Enter address here...">
-                                </div> -->
-
-                               <!--  <div class="form-group">
-                                    <label for="price">Price: </label>
-                                    <input type="number" name="price" id="price_search" style="width: 200px;" class="form-control" placeholder="Enter price here...">
-                                </div> -->
-
-                               <!--  <div class="form-group">
-                                    <label for="owner">Owner: </label>
-                                    <input type="number" name="owner" id="owner_search" style="width: 200px;" class="form-control" placeholder="Enter id of owner here...">
-                                </div> -->
-                                
-
                                 </div>
                                 
 

@@ -14,7 +14,7 @@ include "views/inc/header.php";
   <?php endif; ?>
 <div class="layer2">
  <div class="rblock pt-5">
-     <div class="create border  pt-5 mx-auto" style="width:500px; height: 670px;">
+     <div class="create border  pt-5 mx-auto mb-5" style="width:500px; height: 670px;">
          <h3 class="text-center"><i class="fa fa-user mr-2" aria-hidden="true"></i>Create New Account</h3>
         <form action="<?= ROOT ?>users/create" method="post">
             <div class="form-group">

@@ -19,15 +19,15 @@
             </div>
         <?php else: ?>
             <div class="carousel-item active">
-                <img class="d-block w-100" src="public/images/bedroom.webp" alt="bedroom">
+                <img class="d-block w-100" src="<?php echo PUBLIC_ROOT?>images/bedroom.webp" alt="bedroom">
             </div>
 
             <div class="carousel-item">
-                <img class="d-block w-100" src="public/images/bathroom.jpg" alt="bathroom">
+                <img class="d-block w-100" src="<?php echo PUBLIC_ROOT?>images/bathroom.jpg" alt="bathroom">
             </div>
 
             <div class="carousel-item">
-                <img class="d-block w-100" src="public/images/balcony.jpg" alt="balcony">
+                <img class="d-block w-100" src="<?php echo PUBLIC_ROOT?>images/balcony.jpg" alt="balcony">
             </div>
         <?php endif; ?>
     </div>

@@ -144,9 +144,6 @@ class Room {
     }
 
     public function createNewRoom() {
-        // $this->post_img = "images/itec_blog_628df26139e79.jpeg";
-        // $this->post_user_id = 1;
-        var_dump($this->image);
         $sql = "INSERT INTO `rooms` 
                 (`room_name`, `home_type`, `room_type`, `total_occupancy`, `total_bedrooms`, `total_bathrooms`, `summary`, `address`, `has_TV`, `has_kitchen`, `has_air_con`, `has_heating`, `has_internet`, `price`, `owner_id`, `image`, `created_at`) 
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP);";
