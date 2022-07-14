@@ -71,16 +71,14 @@ class Reservation {
 
 
     public function checkReservation($id) {
-        $sql=" SELECT res.room_id
-        FROM `reservations` as res
-        JOIN `rooms` as r
-        on res.room_id = r.id
-        where res.id >= ALL(SELECT res1.id
-                            FROM `reservations` as res1
-                            JOIN `rooms` as r1
-                            on res1.room_id = r1.id and  r1.id= 1 )
-                            and r.id=? and DATEDIFF(res.end_date, NOW()) <= 0
-                            GROUP BY res.room_id";
+        $sql="SELECT *
+        FROM reservations as res
+        RIGHT JOIN rooms as r on res.room_id = r.id
+        WHERE 
+        (res.end_date >= ALL (SELECT res1.end_date
+        FROM reservations as res1
+        JOIN rooms as r1 on r1.id = res1.id
+        WHERE res1.room_id = res.room_id)  and res.room_id = ? and DATEDIFF(res.end_date, NOW()) <= 0 ) OR (res.id is NULL and r.id = ?)";
         
         $stmt = $this->conn->prepare($sql);
         $stmt->bind_param("i", $id);
