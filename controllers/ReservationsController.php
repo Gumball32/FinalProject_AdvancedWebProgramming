@@ -33,12 +33,13 @@ class ReservationsController extends Controller {
     public function newReservation($id) {
         $resObj = new Reservation($this->conn);
         
-        // if($resObj->checkReservation($id)->success()) {        
+        if($resObj->checkReservation($id)->success()) {        
             include "views/create_reservation.php";
-        // }
-        // else {
-        //     echo "this room is not available";
-        // }
+        }
+        else {
+            Messenger::setMsg("This room has been booked! Please book another one!", "danger");    
+            Router::redirect("");
+        }
     }
 
     public function newReservation_get() {

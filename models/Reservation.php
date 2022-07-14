@@ -81,7 +81,7 @@ class Reservation {
         WHERE res1.room_id = res.room_id)  and res.room_id = ? and DATEDIFF(res.end_date, NOW()) <= 0 ) OR (res.id is NULL and r.id = ?)";
         
         $stmt = $this->conn->prepare($sql);
-        $stmt->bind_param("i", $id);
+        $stmt->bind_param("ss", $id, $id);
         $stmt->execute();
         $results = $stmt->get_result();    
         if($results->num_rows === 0) {
